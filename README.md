@@ -1,10 +1,9 @@
 
-# Implementation of RAKE 
-# (Rapid Automatic Keyword Extraction)
-
+# Implementation of RAKE
 (Based on: https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
 
 The input text is given below
+
 
 ```python
 #Source of text:
@@ -23,6 +22,7 @@ considered types of systems and systems of mixed types."
 
 The raw input text is cleaned off non-printable characters (if any) and turned into lower case.
 The processed input text is then tokenized using NLTK library functions. 
+
 
 ```python
 import nltk
@@ -317,14 +317,13 @@ for i in xrange(0,len(phrases)):
     Score of candidate keyword 'mixed type': 3.33333
 
 
-The indices of the phrase_score ndarray are then sorted in descending order in terms of
+The index of the phrase score ndarray is then sorted in descending order in terms of
 the score values.
-The indices of phrase_score corresponds to the indices of the phrases in the 'phrases' list.
-So by getting the sorted order of the indices of phrase_scores, 
-we also get the sorted (in terms of score values) order of the phrases.
+The index corresponds to the location of the concerned phrase in phrases list.
+So by getting the sorted order of the index, we also get the sorted order of the phrases.
 Each phrase can be considered as a <b>candidate keyword</b>. 
 We can then simply choose the top n highest scoring candidate keywords and present them as
-the exctracted keywords from the given input text. 
+the final exctracted keywords for the system. 
 
 
 ```python
@@ -343,7 +342,18 @@ for i in xrange(0,keywords_num):
     linear diophantine equation,  minimal generating set,  minimal supporting set,  minimal set,  linear constraint,  natural number,  strict inequations,  nonstrict inequations,  upper bound,  corresponding algorithm, 
 
 
+# Input:
 
-```python
+Compatibility of systems of linear constraints over the set of natural numbers. Criteria of compatibility of a system of linear Diophantine equations, strict inequations, and nonstrict inequations are considered. Upper bounds for components of a minimal set of solutions and algorithms of construction of minimal generating sets of solutions for all types of systems are given. These criteria and the corresponding algorithms for constructing a minimal supporting set of solutions can be used in solving all the considered types of systems and systems of mixed types.
 
-```
+# Extracted Keywords:
+
+* linear diophantine equation,  
+* minimal generating set,  
+* minimal supporting set,  
+* minimal set,  
+* linear constraint,  
+* natural number,  
+* strict inequations,  
+* nonstrict inequations,  
+* upper bound.
