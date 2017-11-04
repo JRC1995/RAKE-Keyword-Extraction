@@ -1,9 +1,10 @@
 
-# Implementation of RAKE - Rapid Automatic Keyword Extraction.
+# Implementation of RAKE 
+# (Rapid Automatic Keyword Extraction).
+
 (Based on: https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
 
 The input text is given below
-
 
 ```python
 #Source of text:
@@ -22,7 +23,6 @@ considered types of systems and systems of mixed types."
 
 The raw input text is cleaned off non-printable characters (if any) and turned into lower case.
 The processed input text is then tokenized using NLTK library functions. 
-
 
 ```python
 import nltk
