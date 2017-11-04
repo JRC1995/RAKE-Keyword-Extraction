@@ -25,9 +25,12 @@ The processed input text is then tokenized using NLTK library functions.
 
 
 ```python
+
 import nltk
 from nltk import word_tokenize
 import string
+
+#nltk.download('punkt')
 
 def clean(text):
     text = text.lower()
@@ -58,6 +61,8 @@ http://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
 
 
 ```python
+#nltk.download('averaged_perceptron_tagger')
+  
 POS_tag = nltk.pos_tag(text)
 
 print "Tokenized Text with POS tags: \n"
@@ -79,6 +84,8 @@ https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.h
 
 
 ```python
+#nltk.download('wordnet')
+
 from nltk.stem import WordNetLemmatizer
 
 wordnet_lemmatizer = WordNetLemmatizer()
@@ -263,25 +270,33 @@ which form the members of the phrase.
 ```python
 import numpy as np
 
-index=0
-phrase_scores = np.zeros((len(phrases)),dtype=np.float32)
+phrase_scores = []
 keywords = []
+phrase_vocabulary=[]
 
 for phrase in phrases:
-    for word in phrase:
-        phrase_scores[index] += word_score[word]
-    index+=1
+    if phrase not in phrase_vocabulary:
+        phrase_score=0
+        for word in phrase:
+            phrase_score+= word_score[word]
+        phrase_scores.append(phrase_score)
+        phrase_vocabulary.append(phrase)
 
-for i in xrange(0,len(phrases)):
+phrase_vocabulary = []
+j=0
+for phrase in phrases:
     
-    keyword=''
-    for word in phrases[i]:
-        keyword += str(word)+" "
+    if phrase not in phrase_vocabulary:
+        keyword=''
+        for word in phrase:
+            keyword += str(word)+" "
+        phrase_vocabulary.append(phrase)
+        keyword = keyword.strip()
+        keywords.append(keyword)
     
-    keyword = keyword.strip()
-    keywords.append(keyword)
-    
-    print "Score of candidate keyword '"+keywords[i]+"': "+str(phrase_scores[i])
+        print "Score of candidate keyword '"+keywords[j]+"': "+str(phrase_scores[j])
+        
+        j+=1
 ```
 
     Score of candidate keyword 'compatibility': 1.0
@@ -290,31 +305,22 @@ for i in xrange(0,len(phrases)):
     Score of candidate keyword 'set': 2.25
     Score of candidate keyword 'natural number': 4.0
     Score of candidate keyword 'criterion': 1.0
-    Score of candidate keyword 'compatibility': 1.0
-    Score of candidate keyword 'system': 1.0
     Score of candidate keyword 'linear diophantine equation': 8.5
     Score of candidate keyword 'strict inequations': 4.0
     Score of candidate keyword 'nonstrict inequations': 4.0
     Score of candidate keyword 'upper bound': 4.0
     Score of candidate keyword 'component': 1.0
-    Score of candidate keyword 'minimal set': 4.91667
+    Score of candidate keyword 'minimal set': 4.91666666667
     Score of candidate keyword 'solution': 1.0
     Score of candidate keyword 'algorithm': 1.5
     Score of candidate keyword 'construction': 1.0
-    Score of candidate keyword 'minimal generating set': 7.91667
-    Score of candidate keyword 'solution': 1.0
-    Score of candidate keyword 'type': 1.33333
-    Score of candidate keyword 'system': 1.0
-    Score of candidate keyword 'criterion': 1.0
+    Score of candidate keyword 'minimal generating set': 7.91666666667
+    Score of candidate keyword 'type': 1.33333333333
     Score of candidate keyword 'corresponding algorithm': 3.5
     Score of candidate keyword 'constructing': 1.0
-    Score of candidate keyword 'minimal supporting set': 7.91667
-    Score of candidate keyword 'solution': 1.0
+    Score of candidate keyword 'minimal supporting set': 7.91666666667
     Score of candidate keyword 'solving': 1.0
-    Score of candidate keyword 'type': 1.33333
-    Score of candidate keyword 'system': 1.0
-    Score of candidate keyword 'system': 1.0
-    Score of candidate keyword 'mixed type': 3.33333
+    Score of candidate keyword 'mixed type': 3.33333333333
 
 
 The index of the phrase score ndarray is then sorted in descending order in terms of
@@ -339,7 +345,7 @@ for i in xrange(0,keywords_num):
 
     Keywords:
     
-    linear diophantine equation,  minimal generating set,  minimal supporting set,  minimal set,  linear constraint,  natural number,  strict inequations,  nonstrict inequations,  upper bound,  corresponding algorithm, 
+    linear diophantine equation,  minimal supporting set,  minimal generating set,  minimal set,  linear constraint,  natural number,  upper bound,  nonstrict inequations,  strict inequations,  corresponding algorithm, 
 
 
 # Input:
@@ -353,7 +359,7 @@ Compatibility of systems of linear constraints over the set of natural numbers. 
 * minimal supporting set,  
 * minimal set,  
 * linear constraint,  
-* natural number,  
-* strict inequations,  
-* nonstrict inequations,  
-* upper bound.
+* natural number,     
+* upper bound,
+* nonstrict inequations
+* strict equations
