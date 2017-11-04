@@ -1,5 +1,5 @@
 
-# Implementation of RAKE
+# Implementation of RAKE - Rapid Automatic Keyword Extraction.
 (Based on: https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
 
 The input text is given below
