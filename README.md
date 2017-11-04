@@ -339,7 +339,7 @@ keywords_num = 10
 
 print "Keywords:\n"
 
-for i in xrange(0,keywords_num):
+for i in xrange(0,keywords_num):sa
     print str(keywords[sorted_index[i]])+", ",
 ```
 
@@ -363,3 +363,7 @@ Compatibility of systems of linear constraints over the set of natural numbers. 
 * upper bound,
 * nonstrict inequations
 * strict equations
+
+# Disadvantage of RAKE:
+
+Overly biased towards longer candidate keyphrases.
