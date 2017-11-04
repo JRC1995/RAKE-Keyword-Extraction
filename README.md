@@ -317,13 +317,14 @@ for i in xrange(0,len(phrases)):
     Score of candidate keyword 'mixed type': 3.33333
 
 
-The index of the phrase score ndarray is then sorted in descending order in terms of
+The indices of the phrase_score ndarray are then sorted in descending order in terms of
 the score values.
-The index corresponds to the location of the concerned phrase in phrases list.
-So by getting the sorted order of the index, we also get the sorted order of the phrases.
+The indices of phrase_score corresponds to the indices of the phrases in the 'phrases' list.
+So by getting the sorted order of the indices of phrase_scores, 
+we also get the sorted (in terms of score values) order of the phrases.
 Each phrase can be considered as a <b>candidate keyword</b>. 
 We can then simply choose the top n highest scoring candidate keywords and present them as
-the final exctracted keywords for the system. 
+the exctracted keywords from the given input text. 
 
 
 ```python
