@@ -366,7 +366,3 @@ Compatibility of systems of linear constraints over the set of natural numbers. 
 * upper bound,
 * nonstrict inequations
 * strict equations
-
-# Disadvantage of RAKE:
-
-Overly biased towards longer candidate keyphrases.
