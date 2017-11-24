@@ -1,6 +1,9 @@
 
 # Implementation of RAKE
-(Based on: https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
+
+Based on: 
+
+[Rose, Stuart & Engel, Dave & Cramer, Nick & Cowley, Wendy. (2010). Automatic Keyword Extraction from Individual Documents. Text Mining: Applications and Theory. 1 - 20. 10.1002/9780470689646.ch1.](https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
 
 The input text is given below
 
@@ -264,7 +267,7 @@ print word_score
 
 
 The phrase scores are calculated by adding individual scores of each of the words
-which form the members of the phrase. 
+which are the members of the phrase. 
 
 
 ```python
@@ -323,7 +326,7 @@ for phrase in phrases:
     Score of candidate keyword 'mixed type': 3.33333333333
 
 
-The index of the phrase score ndarray is then sorted in descending order in terms of
+The index of the phrase_scores ndarray is then sorted in descending order in terms of
 the score values.
 The index corresponds to the location of the concerned phrase in phrases list.
 So by getting the sorted order of the index, we also get the sorted order of the phrases.
